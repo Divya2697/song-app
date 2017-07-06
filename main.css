@@ -85,3 +85,10 @@ h1 {
 .play-icon {
     // color: teal;
 }
+.hidden
+{
+	display:none;
+}
+.error{
+	border: 2px solid red;
+}
