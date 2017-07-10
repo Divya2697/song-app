@@ -39,7 +39,7 @@
        $('.welcome-screen button').on('click', function() {
        var name = $('#name-input').val();
 	   if(name.length > 2)  {
-	   var message ="Welcome to virtual drum kit, " +name;
+	   var message ="Welcome to virtual drum kit, " +name;     //welcome-message
 	   $('.main h1').text(message); //text message
 	   //console.log(message);
 	   $('.welcome-screen').addClass('hidden');
@@ -50,6 +50,21 @@
 		 $('#name-input').addClass('error');
 		 }
          });
+		 
+		 $('.play-icon').on('click',function() {
+         var song = document.querySelector('audio');
+        if(song.paused == true) {
+        console.log('Playing');
+        song.play();
+        }
+        else {
+        console.log('Pausing');
+        song.pause();
+        }
+        }); 
+ 
+		 
+
 	
 	
 	/*var name;
