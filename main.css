@@ -11,6 +11,7 @@ body {
     border: 0;
     margin: 0;
     font-size: 16px;
+	
 }
 
 h1 {
@@ -205,4 +206,18 @@ table.dataTable tbody tr {
     width: 400px;
     margin-bottom: 1rem;
     font-size: 16px;
+}
+.btn{
+	
+	background-color:white;
+}
+.player-buttons .fa {
+    margin-right: 2rem;
+}
+
+.fa.disabled {
+    color: gray;
+}
+.fa.disabled {
+    color: gray;
 }

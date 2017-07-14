@@ -1,4 +1,7 @@
-		
+
+
+
+
 		 	function fancyTimeFormat(time)                       //time setting to show time in minutes 
 		 {   
 		     var hrs = ~~(time / 3600);
@@ -36,12 +39,13 @@
          toggleSong();
          });
  
-		$('body').on('keypress', function(event) {               //PLAY OR PAUSE USING SPACEBAR
-                if (event.keyCode == 32) 
-				{
-                    toggleSong();
-                }
-            });
+		$('body').on('keypress', function(event) {                  //PLAY OR PAUSE USING SPACEBAR
+        var target = event.target;
+        if (event.keyCode == 32 && target.tagName !='INPUT')
+    {
+        toggleSong();
+    }
+});
 			
 			
 		function changeCurrentSongDetails(songObj) {
@@ -134,6 +138,7 @@
  					},
 			
  				]
+				
 		 
 		 window.onload = function() {                        //window onload function used for whole window events
 		  
@@ -167,8 +172,14 @@
 						//$('#song3 .song-name').text(songName3);
 						//$('#song4 .song-name').text(songName4);
 						// $('#song5 .song-name').text(songName5);
-		 
-		 
+						
+						
+
+
+						
+						
+						
+	
  				
 
 	   updateCurrentTime();                                  //after every 1 sec time will be updated in footer
