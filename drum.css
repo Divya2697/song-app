@@ -1,6 +1,6 @@
 html {
   font-size: 10px;
-  background: url(pic/d5.jpg) bottom center;
+  background: url(pic/d5.jpg) bottom center;                             /* background-image ADDED */
   background-size: cover;
 }
 body,html {
@@ -10,7 +10,7 @@ body,html {
   
 }
 
-.keys {
+.keys {                                                                   /*   keys alignment   */
   display: flex;
   flex: 1;
   min-height: 100vh;
@@ -18,7 +18,7 @@ body,html {
   justify-content: center;
 }
 
-.key {
+.key {                                                                  /*  key transition and color of font etc. given here */
   border: .4rem solid white;
   border-radius: .5rem;
   margin: 1rem;
@@ -32,25 +32,25 @@ body,html {
   text-shadow: 0 0 .5rem black;
 }
 
-.playing {
+.playing {                                                       /* when sound is played then changing of key  box color  */
   transform: scale(1.1);
   border-color: #BB122E;
   box-shadow: 0 0 1rem #BB122E;
 }
 
-kbd {
+kbd {                                                        /*       key size          */
   display: block;
   font-size: 4rem;
 }
 
-.sound {
+.sound {                                                           
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: .1rem;
   color: #BB122E;
 }
 
- /*      button starting     */
+                                         /*      button starting   from where we will jump to home page   */
  
 #ballMenuContainer {
     position: absolute;
@@ -161,7 +161,8 @@ kbd {
   }
 }
 
-.menuBall {
+.menuBall {                                          /* back button properties */
+
     position: relative;
 	right:-1100px;
     width: 100px;
@@ -170,8 +171,8 @@ kbd {
     display: inline-block;
 }
 
-.ball {
-    position:absolute;
+.ball {                                                 
+    position:absolute;                                           
     width:100%;
     height:100%;
     -moz-border-radius: 50%;
@@ -183,15 +184,15 @@ kbd {
     text-decoration: none;
 }
 
-.ball:hover {
+.ball:hover {                                                       /* back button hover setting */
     -webkit-animation: pulse 1s ease 0s infinite normal;
     -o-animation: pulse 1s ease 0s infinite normal;
     -moz-animation: pulse 1s ease 0s infinite normal;
     animation: pulse 1s ease 0s infinite normal;
 }
 
-.redball {
-    background-color: #d90e23;
+.redball {                                                       /* back button properties like bg color ,bg image etc*/
+    background-color: #d90e23;                                     
     -moz-box-shadow: 0 0 0 3px #d90e23, 2px 1px 4px 4px rgba(10,10,0,.5);
     -webkit-box-shadow: 0 0 0 3px #d90e23, 2px 1px 4px 4px rgba(10,10,0,.5);
     -o-box-shadow: 0 0 0 3px #d90e23, 2px 1px 4px 4px rgba(10,10,0,.5);
@@ -206,7 +207,7 @@ kbd {
 
 
 
-.menuText {
+.menuText {                                                            /*back button text properties */
     font-family: 'IdolwildRegular' , Verdana, Helvetica, Sans-Serif;
     font-size: 20px;
     color: #ffffff;

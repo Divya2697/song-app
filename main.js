@@ -1,5 +1,8 @@
-
-
+ 
+				var currentSongNumber = 1;
+				var willLoop = 0;
+				var willShuffle = 0;
+				var willvisual = 0;
 
 
 		 	function fancyTimeFormat(time)                       //time setting to show time in minutes 
@@ -46,6 +49,7 @@
         toggleSong();
     }
 });
+
 			
 			
 		function changeCurrentSongDetails(songObj) {
@@ -75,6 +79,12 @@
  			});
 		}
 		
+		   
+					
+		
+		
+		
+		
 
 	
 	    function updateCurrentTime() {                                     //duration and current time display function
@@ -88,6 +98,12 @@
 		$('.time-elapsed').text(currentTime);
 		$('.song-duration').text(duration);
 		} 
+		 
+		 
+		
+		 
+		 
+		 
 		 
 		 //var songName1 = 'Despacito';                                              //simple declaration
 		// var songName2 = 'Work';
@@ -225,19 +241,15 @@
 	
 	
 	// document.querySelector('.name-input').value;                  
-	  $('.welcome-screen button').on('click', function() {                                  //welcome screen
-       var name = $('#name-input').val();
-	   if(name.length > 2)  {
-	   var message ="Welcome to virtual drum kit, " +name;     //welcome-message
-	   $('.main h1').text(message); //text message
-	   //console.log(message);
-	   $('.welcome-screen').addClass('hidden');
-	   $('.main').removeClass('hidden');
-         }
-		 else
-		 {
-		 $('#name-input').addClass('error');
-		 }
-         });
-	 
+	  $('.welcome-screen button').on('click', function() {                           //welcome screen to display name
+         var name = $('#name-input').val();
+        if (name.length > 3) {
+            var message = "Welcome, " + name;
+            $('.main .user-name').text(message);
+            $('.welcome-screen').addClass('hidden');
+            $('.main').removeClass('hidden');
+        } else {
+            $('#name-input').addClass('error');
+        }
+    });
 	 

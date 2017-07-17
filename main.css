@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-html,
+html,                                /* html full body adjustment:height,width etc. */
 body {
     height: 100%;
     width: 100%;
@@ -14,7 +14,7 @@ body {
 }
 
 h1 {
-    border: 0;
+    border: 0;                            /*heading which will display at top right corner */
     margin: 0;
 }
 
@@ -24,7 +24,7 @@ h1 {
     background-color: #BBB;
 }
 
-.welcome-screen {
+.welcome-screen {                          /* welcome-screen-adjustment */
     height: 100%;
     width: 100%;
     display: flex;
@@ -35,7 +35,7 @@ h1 {
   background-size: cover;
 }
 
-.main {
+.main {                                        /* main  properties */
     width: 100%;
     height: 100%;
     display: flex;
@@ -45,27 +45,29 @@ h1 {
 	
 }
 
-.main header {
+.main header {                            /*  main and header coor and font properties   */
     height: 80px;
     background-color: black;
     padding: 1rem;
-    color: #FFF;
+    color: #BB122E;
+	font-weight:bold;
+	font-size:30px;
 }
 
-.main .content {
+.main .content {                                /*  background image addition  in middle  */
     flex:1;
     background-color: #1f1f1f;
 	 background: url(pic/d2.jpg) bottom center;
   background-size: cover;
 }
 
-.main footer {
+.main footer {                                  /*  footer properties adjustment  */
     height: 80px;
     background-color: black;
     padding-top: 1rem;
 }
 
-.player-buttons {
+.player-buttons {                                /*  player button adjustment and properties   */
     display:flex;
     font-size: 1.5rem;
     justify-content: center;
@@ -76,7 +78,7 @@ h1 {
     display: none;
 }
 
-.right.floated {
+.right.floated {                               
     float: right;
 }
 
@@ -84,7 +86,7 @@ h1 {
     cursor: pointer;
 }
 
-.error {
+.error {                                  /* welcome screen name input tag properties if name is blank */
     border: 2px solid red;
 }
 
@@ -99,7 +101,7 @@ h1 {
     color: #959595;
 }
 
-.player-progress {
+.player-progress {               /*  progress bar adjustment of properties */
     height: 8px;
     width: 700px;
     background-color: #3d3d3d;
@@ -121,7 +123,7 @@ h1 {
     margin: 2rem auto;
 }
 
-.list-headers {
+.list-headers {                                         /* list header displayed at top of song list properties */
     padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.5);
 }
@@ -139,7 +141,7 @@ h1 {
     text-align: right;
 }
 
-.song-list .song {
+.song-list .song {                                            /* song list adjustment */
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 1px solid rgba(255,255,255,0.5);
@@ -161,12 +163,12 @@ h1 {
     text-align: right;
 }
 
-.song-list .song:hover {
-    background-color: #282828;
+.song-list .song: hover {
+    background-color:  #BB122E;
 }
 
 
-.song-length {
+.song-length {                /*song length text align */
     text-align: right;
 }
 
@@ -179,19 +181,19 @@ h1 {
     display: flex;
 }
 
-.current-song-image {
+.current-song-image {             /* current song image  display  style */
     height: 100px;
     width: 100px;
     margin-right: 1rem;
 }
 
-.current-song-name {
+.current-song-name {                 /* current song name  display  style*/
     font-size: 1.4rem;
     margin-top: 4px;
     margin-bottom: 0;
 }
-
-.current-song-album {
+ 
+.current-song-album {                     /* current song album name  display  style */
     margin-top: 0.4rem;
 }
 
@@ -339,7 +341,8 @@ table.dataTable tbody tr {
 }
 
 .menuBall {
-    position: relative;
+    position: absolute;
+	left:-1300px;
     width: 100px;
     height: 100px;
     margin: 5px;
@@ -416,7 +419,7 @@ table.dataTable tbody tr {
  /*       button coding ending         */
 
 
-.btn{
+.btn{                                          /*welcome screen go button style */
     width: 100px;
     background-color:#BB122E ;
 	border:none;
@@ -424,7 +427,7 @@ table.dataTable tbody tr {
 	position:absolute;
 	left: 640px;
 }
-.btn{
+.btn{                                             /*welcome screen go button animation properties */
 	
     width: 100px;
     height: 100px;
@@ -436,7 +439,7 @@ table.dataTable tbody tr {
 	color:white;
 }
 
-@-webkit-keyframes mymove {
+@-webkit-keyframes mymove {                     /*  button moves   adjustment*/
     from {left: 0px;}
     to {left: 100px;}
 }
@@ -448,7 +451,7 @@ table.dataTable tbody tr {
 }
 
 
-.clr
+.clr                                   /* color  for welcome screen heading */
 {
 	color:#BB122E;
 	  font-weight: bold;
