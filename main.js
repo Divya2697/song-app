@@ -1,8 +1,17 @@
- 
+				var Playnumb = 0  ;
+				var shuffle=0;
+				var equal = 0;
 				var currentSongNumber = 1;
 				var willLoop = 0;
 				var willShuffle = 0;
 				var willvisual = 0;
+
+				
+					function randomExcluded(min, max, excluded) {					//shuffle 
+					var n = Math.floor(Math.random() * (max-min) + min);
+					if (n >= excluded) n++;
+					return n;
+			}
 
 
 		 	function fancyTimeFormat(time)                       //time setting to show time in minutes 
@@ -22,7 +31,17 @@
 		     ret += "" + secs;
 		     return ret;
 		 }
-		         
+		     
+
+
+				function changeSong()                                     // to change song
+				{
+				var music =  songs[Playnumb].fileName;
+				var song = document.querySelector("audio");
+				song.src = music;
+				toggleSong();
+				changeCurrentSongDetails(songs[Playnumb])
+				}			 
 
 		 function toggleSong() {                                          //function addition for play and pause setting
          var song = document.querySelector('audio');
@@ -58,7 +77,21 @@
     $('.current-song-album').text(songObj.album)
     }
 		
-			
+		
+
+						function UpdateTimer() {									//function for progress bar
+						var song = document.querySelector('audio');
+						var ct = song.currentTime;
+						var td = song.duration;
+						var percentage = (ct/td)*100;
+						$('.progress-filled').css('width', percentage+ "%");
+						}
+
+							function timeJump() {									//function for jumping to next song
+							var song = document.querySelector('audio')
+							song.currentTime = song.duration - 5;
+							}
+						
 			
 			
  			function addSongNameClickEvent(songObj,position) {    //click event for each song ('by clicking on songname or album etc., we can play the song')
@@ -171,6 +204,19 @@
  		}
 		
 
+		updateCurrentTime();                                  //after every 1 sec time will be updated in footer
+        setInterval(function() {
+        updateCurrentTime();
+		UpdateTimer();		
+         },1000);
+		 
+		 
+		 $('#songs').DataTable({
+        paging: false
+    });
+		 }
+		 
+
 		 
 					// addSongNameClickEvent(fileNames[0],1);
 					 //addSongNameClickEvent(fileNames[1],2);
@@ -192,22 +238,115 @@
 						
 
 
+							$('.fa-repeat').on('click',function() {						// use for loop
+							$('.fa-repeat').toggleClass('disabled')
+							willLoop = 1 - willLoop;
+							});
+
+							$('.fa-random').on('click',function() {							//shuffling
+							$('.fa-random').toggleClass('disabled');
+							willShuffle = 1 - willShuffle;
+							});
+
+							$('audio').on('ended',function() {							//loop
+								var audio = document.querySelector('audio');
+								if (willShuffle == 1) {
+									var nextSongNumber = randomExcluded(1,6,currentSongNumber); 
+									var nextSongobj = songs[nextSongNumber-1];
+									audio.src = nextSongobj.fileName;
+									toggleSong();
+									changeCurrentSongDetails(nextSongobj);
+									currentSongNumber = nextSongNumber;
+								}
+								else if(currentSongNumber < 5) {						
+									var nextSongobj = songs[currentSongNumber];
+									audio.src = nextSongobj.fileName;
+									toggleSong();
+									changeCurrentSongDetails(nextSongobj);
+									currentSongNumber = currentSongNumber + 1;
+								}
+								else if(willLoop == 1) {						
+									var nextSongobj = songs[0];
+									audio.src = nextSongobj.fileName;
+									toggleSong();
+									changeCurrentSongDetails(nextSongobj);
+									currentSongNumber =  1;
+								}
+								else {
+									$('.play-icon').removeClass('fa-pause').addClass('fa-play');
+									audio.currentTime = 0;
+								}
+							});
 						
 						
 						
 	
  				
 
-	   updateCurrentTime();                                  //after every 1 sec time will be updated in footer
-        setInterval(function() {
-        updateCurrentTime();
-         },1000);
+	   
 		 
 		 
-		 $('#songs').DataTable({
-        paging: false
-    });
-		 }
+$(".fa-step-forward").click(function(){                                //to go to next song
+
+if(shuffle==1)
+{
+var audio = document.querySelector('audio');
+var nextSongNumber = randomExcluded(0,3,Playnumb); 
+
+var nextSongObj = songs[nextSongNumber];
+audio.src = nextSongobj.fileName;
+toggleSong();
+changeCurrentSongDetails(nextSongobj);
+Playnumb = nextSongNumber;
+
+
+}
+
+
+else {
+
+if(Playnumb == songs.length-1){
+Playnumb = 0;
+changeSong();
+}
+
+else {
+console.log("two");
+console.log(Playnumb);
+Playnumb++;
+changeSong();
+}
+
+}
+
+})
+
+
+
+
+$(".fa-step-backward").click(function(){                        //to go back to previous song
+
+if(Playnumb == 0){
+console.log("one");
+Playnumb = (songs.length-1);
+changeSong();
+
+
+
+
+}
+
+else {
+console.log("two");
+console.log(Playnumb);
+Playingnumber--;
+changeSong();
+}
+
+
+
+
+})
 	
 	
 	
@@ -241,15 +380,25 @@
 	
 	
 	// document.querySelector('.name-input').value;                  
-	  $('.welcome-screen button').on('click', function() {                           //welcome screen to display name
-         var name = $('#name-input').val();
-        if (name.length > 3) {
-            var message = "Welcome, " + name;
-            $('.main .user-name').text(message);
-            $('.welcome-screen').addClass('hidden');
-            $('.main').removeClass('hidden');
-        } else {
-            $('#name-input').addClass('error');
-        }
-    });
-	 
+	  
+    $('.welcome-screen button').on('click', function() {
+    var name = $('#name-input').val();                                  
+         var email = $('#email-input').val();  
+         var pswd = $('#pswd-input').val();           
+       
+    if(name.length > 3 && email.search('test@acadview.com') != -1 && pswd.search('JavascriptRocks')!=-1){         // to validate the input tags
+      var message = "Welcome, " + name;                                                                         //show message on second page 
+      $('.main .user-name').text(message);
+      $('.welcome-screen').addClass('hidden');
+      $('.main').removeClass('hidden');
+      $(".content h1").text(message);
+     }
+     else{
+         $("#name-input").addClass("error"); 
+		    $("#email-input").addClass("error"); 
+			   $("#pswd-input").addClass("error"); 
+     }
+       
+});
+	
+    
